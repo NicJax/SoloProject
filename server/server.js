@@ -1,22 +1,22 @@
 const express = require('express');
 const path = require('path');
 const db = require('../database/kartonModel');
-const userRouter = require('./routes/userRouter');
+const userRouter = require('./routes/userRouter.js');
 
 const karton = express();
 
 // const addUser = `insert into "Users" (first_name, last_name) values ('Rachael', 'Palmer')`;
 // db.query(addUser);
 
-db.query('SELECT * FROM "Users"').then((data) => {
-  console.log(data);
-});
+// db.query('SELECT * FROM "Users"').then((data) => {
+//   console.log(data);
+// });
 
-db.query('SELECT * FROM "Expense Affiliates"').then((data) => {
-  console.log(data);
-});
+// db.query('SELECT * FROM "Expense Affiliates"').then((data) => {
+//   console.log(data);
+// });
 
-
+karton.use('/user', userRouter);
 
 //const userRouter = require('./routes/api.js');
 
