@@ -1,0 +1,19 @@
+{
+  "name": "karton",
+  "version": "1.0.0",
+  "description": "Nic's solo-project for codesmith",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicJax/SoloProject.git"
+  },
+  "author": "NicJax",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicJax/SoloProject/issues"
+  },
+  "homepage": "https://github.com/NicJax/SoloProject#readme"
+}
