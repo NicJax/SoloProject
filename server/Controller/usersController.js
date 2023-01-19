@@ -7,7 +7,7 @@ usersController.getUsers = (req, res, next) => {
   console.log('getting all users');
   db.query(sqlString)
     .then((data) => {
-      console.log('helloooooo');
+      //console.log('helloooooo');
       console.log(data.rows);
       res.locals.allUsers = data.rows;
       return next();
@@ -18,12 +18,13 @@ usersController.getUsers = (req, res, next) => {
 };
 
 usersController.addUser = (req, res, next) => {
-  //adding a user to the user table in karton DB
-  // posted object should look like:
-  // {
-  //     "firstName": "firstname",
-  //     "lastName": "lastname",
-  // }
+  /*adding a user to the user table in karton DB
+  posted object should look like:
+  {
+      "firstName": "firstname",
+      "lastName": "lastname",
+  }
+  */
   console.log('adding a user!');
   console.log(req.body);
   const values = [req.body.firstName, req.body.lastName];

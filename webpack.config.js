@@ -43,3 +43,5 @@ module.exports = (env) => {
     },
   };
 };
+
+//& cross-env NODE_ENV = development nodemon server/server.js for the dev script

@@ -26,11 +26,11 @@ karton.use('/expense', expenseRouter);
 
 //const userRouter = require('./routes/api.js');
 
-karton.get('/', (req, res) => {
-    return res
-      .status(200)
-      .sendFile(path.resolve(__dirname, '../client/app.jsx'));
-  });
+// karton.get('/', (req, res) => {
+//     return res
+//       .status(200)
+//       .sendFile(path.resolve(__dirname, '../client/index.html'));
+//   });
 
 karton.use((req, res) => {
     //global error handler

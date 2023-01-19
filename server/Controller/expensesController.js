@@ -2,6 +2,16 @@ const db = require('../../database/kartonModel');
 const expensesController = {};
 
 expensesController.getAllExpenses = (req,res,next) => {
+    /* Test expense should look like this
+    {
+        "cost": 150.00, 
+        "date" : "2023-01-18T23:58:12.604Z",
+        "description" : "A test expense",
+        "purchaser_id" : 1,
+        "affiliates" : [1,2,3,4]
+    }
+    */
+
     console.log('getting all expenses');
     db.query('SELECT * FROM "Expenses"')
     .then((data) => {
