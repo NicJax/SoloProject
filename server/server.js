@@ -27,7 +27,7 @@ karton.use('/expense', expenseRouter);
 karton.get('/', (req, res) => {
     return res
       .status(200)
-      .sendFile(path.resolve(__dirname, '../client/index.html'));
+      .sendFile(path.resolve(__dirname, '../client/app.jsx'));
   });
 
 karton.use((req, res) => {

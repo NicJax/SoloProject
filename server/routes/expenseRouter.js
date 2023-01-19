@@ -16,5 +16,10 @@ router.get('/s', expensesController.getAllExpenses, (req, res) => {
     res.status(200).send(res.locals.affiliates);
   });
 
+  router.get('/expAff', expensesController.getAllJoins, (req, res) => {
+    //gets all expenses and sends them back
+      res.status(200).send(res.locals.joinTable);
+  });
+
 
 module.exports = router;

@@ -10,7 +10,7 @@ const HtmlWebpackPluginInfo = new HtmlWebpackPlugin({
 module.exports = (env) => {
   console.log('exporting the webpack config object!');
   return {
-    entry: './client/index.js',
+    entry: './client/app.jsx',
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: 'bundle.js',

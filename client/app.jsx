@@ -1,6 +1,69 @@
 import React, { Component, useEffect, useState, useReducer } from 'react';
 import { render } from 'react-dom';
 // import { render, ReactDOM } from 'react-dom';
+
+
+//-------------------------------------------
+const initialKartonState = {
+    users: [{ id: 1, first_name: 'test', last_name: 'user' }], 
+}
+
+// function retrieveUsers () {
+//     fetch
+// }
+
+function kartonReducer(state, action) {
+    switch (action.type) {
+      case 'updatingUsers':
+        console.log('updating the users!')
+        return updateUsers(state);
+      case 'addingUser':
+        console.log('Resetting the game!');
+        return startingTTT;
+      default:
+        throw new Error('Action is not defined');
+    }
+  }
+
+  function updateUsers(state) {
+    console.log('updating users');
+  }
+
+  function UserExpenseBody (){
+    const [kartonState, updateKarton] = useReducer(kartonReducer, initialKartonState);
+
+    useEffect(() => {
+        console.log('updated karton render');
+      });
+
+      return (
+        <div id='users' key='users'>
+          <button
+            id='test button'
+            onClick={() => console.log('hello')}
+          >
+            {' '}
+            Test Button{' '}
+          </button>
+          {kartonState.users.map((user, i) => (
+            <User key={kartonState.users[i].id} id ={kartonState.users[i].id} firstName = {kartonState.users[i].first_name} lastName = {kartonState.users[i].last_name}/>
+          ))}
+        </div>
+      );
+  }
+  const User = (props) => {
+    const { id, firstName, lastName } = props;
+    return (
+      <div>
+        <h4 id = {id}>{firstName} {lastName}</h4>
+      </div>
+    );
+  };
+
+
+  render(<UserExpenseBody />, document.querySelector('#root'));
+
+//--------------------------------------------
 const startingTTT = {
   boardState: [
     ['-', '-', '-'],
@@ -136,4 +199,4 @@ const Button = (props) => {
   );
 };
 
-render(<Board />, document.querySelector('#root'));
+//render(<Board />, document.querySelector('#root'));
