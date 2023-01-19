@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState, useReducer } from 'react';
 import { render } from 'react-dom';
+import {createRoot} from 'react-dom/client';
 // import { render, ReactDOM } from 'react-dom';
 
 
@@ -32,15 +33,34 @@ function kartonReducer(state, action) {
   function UserExpenseBody (){
     const [kartonState, updateKarton] = useReducer(kartonReducer, initialKartonState);
 
+    const fetchUserData = () => {
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+              }, 
+            method: 'GET',
+            mode: 'cors'
+          };
+        const url = new URL("http://localhost:3000/user/s")
+        return fetch(url, options)
+              .then((response) => response.json())
+              .then((data) => {
+                 console.log(data);
+                 return data
+            }).catch ((err) => {
+                console.log('error in fetching users')
+            });
+      }
+    
     useEffect(() => {
         console.log('updated karton render');
       });
 
       return (
-        <div id='users' key='users'>
+        <div id='addUserField'>
           <button
             id='test button'
-            onClick={() => console.log('hello')}
+            onClick={() => fetchUserData()}
           >
             {' '}
             Test Button{' '}
@@ -60,8 +80,9 @@ function kartonReducer(state, action) {
     );
   };
 
-
-  render(<UserExpenseBody />, document.querySelector('#root'));
+const container = document.querySelector('#root'); 
+const root = createRoot(container); 
+root.render(<UserExpenseBody /> );
 
 //--------------------------------------------
 const startingTTT = {

@@ -3,9 +3,11 @@ const path = require('path');
 const db = require('../database/kartonModel');
 const userRouter = require('./routes/userRouter.js');
 const expenseRouter = require('./routes/expenseRouter.js');
+const cors = require('cors');
 
 const karton = express();
 
+karton.use(cors());
 karton.use(express.json());
 
 // const addUser = `insert into "Users" (first_name, last_name) values ('Rachael', 'Palmer')`;

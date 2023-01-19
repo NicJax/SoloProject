@@ -7,7 +7,7 @@ usersController.getUsers = (req, res, next) => {
   console.log('getting all users');
   db.query(sqlString)
     .then((data) => {
-      console.log('hello');
+      console.log('helloooooo');
       console.log(data.rows);
       res.locals.allUsers = data.rows;
       return next();

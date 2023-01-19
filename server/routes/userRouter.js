@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/s', usersController.getUsers, (req, res) => {
   //gets all users and sends them back
-  console.log('end getting users');
+  console.log(res.locals.allUsers,'end getting users')
   res.status(200).send(res.locals.allUsers);
 });
 
