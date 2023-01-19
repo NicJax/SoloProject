@@ -16,20 +16,20 @@ expensesController.getAllExpenses = (req,res,next) => {
 expensesController.addExpense = (req, res, next) => {
     const {cost, date, description, purchaser_id, affiliates} = req.body; 
       console.log('adding an expense!');
-      const selectUserString = `Select * FROM "Users" where first_name = 'Nic'`;
-      db.query('SELECT * FROM "Users"').then((data) => {
-        console.log(data.rows);
-      });
       console.log(req.body);
-      // affiliates to be an array of users who are involved in an expense
-      
+      //const selectUserString = `Select * FROM "Users" where first_name = 'Nic'`;
       const values = [cost, date, description, purchaser_id];
-      const addUserString = `insert into "Expenses" (cost, date, description, purchaser_id) values ($1, $2, $3, $4)`;
-      db.query(addUserString, values).then((data) => {
-          console.log('success: expense added'); 
-          console.log(data);
-          res.status(200).send(data);
-      });
+      const addExpenseString = `insert into "Expenses" (cost, date, description, purchaser_id) values ($1, $2, $3, $4);`;
+      db.query(addExpenseString, values).then((data) => {
+        console.log(data);
+        db.query('SELECT id FROM "Expenses" ORDER BY ID DESC LIMIT 1').then((selectData) => {
+            res.locals.expenseId = selectData.rows[0].id;
+            res.locals.affiliates = affiliates; 
+            return next(); 
+        });
+        }).catch((err) => {
+            console.log('error with adding an expense');
+        });
 }
 
 
